@@ -29,7 +29,17 @@ def listify(jobsList):
             jobsList[counter] = string.split(",")
         counter += 1
     return jobsList
-    
 
 fileInfo =  listify(fileInfo)
                 
+def dictify(listOfList):
+    d = {} #dictionary
+    #counter = 0
+    for l in listOfList:
+        d[l[0]] = l[1]
+    return d
+
+fileDictionary = dictify(fileInfo)
+print fileDictionary
+    
+
