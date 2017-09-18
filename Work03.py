@@ -7,6 +7,7 @@ def fileOpen(filename):
 fileInfo = fileOpen("occupations.csv")
 
 #print fileInfo
+import random
 
 def tidify(jobsList):
     counter = 0
@@ -34,12 +35,22 @@ fileInfo =  listify(fileInfo)
                 
 def dictify(listOfList):
     d = {} #dictionary
-    #counter = 0
     for l in listOfList:
+        #print l[0]
         d[l[0]] = l[1]
     return d
 
+#print fileInfo
 fileDictionary = dictify(fileInfo)
-print fileDictionary
-    
+#print fileDictionary
 
+def weightedRandom(d):
+    randNum = (1.0 * random.randint(0, 998)) / 10
+    keys = d.keys()
+    for string in keys:
+        if string != "Job Class" and string != "Total":
+            randNum = randNum - float(d[string])
+        if randNum < 0:
+            return string
+
+#print weightedRandom(fileDictionary)
